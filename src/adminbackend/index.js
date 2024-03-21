@@ -8,6 +8,8 @@ const multer = require('multer');
 const data2model=require("./adminlog");
 const Workermodel = require("./WorkerReg");
 const Clientmodel = require("./ClientReg");
+const appmodel = require("./booking");
+const addworkmodel = require("./addwork");
 
 const storage = multer.memoryStorage(); // Store images in memory
 const upload = multer({ storage: storage })
@@ -32,6 +34,11 @@ app.get('/view', async (request, response) => {
         // console.log(data)
         response.send(data)
     })
+    app.get('/workview', async (request, response) => {
+        var data = await addworkmodel.find();
+        // console.log(data)
+        response.send(data)
+    })
 
 
 
@@ -47,6 +54,7 @@ app.delete('/removeworker/:id',async(request,response)=>{
     await Workermodel.findByIdAndDelete(id)
     response.send("Record deleted")
     })
+
     
 
 
@@ -81,7 +89,23 @@ app.post('/adminlog',async(request,response)=>{
         await Workermodel.findByIdAndDelete(id)
         response.send("Record deleted")
         })
-        
+        app.get("/book/:id", async (request, response) => {
+            const { id } = request.params;
+            var data = await appmodel.findById(id);
+            console.log(data);
+            response.send(data);
+          });
+          
+          app.post("/booking",  async (request, response) => {
+            console.log(request.body)
+             new appmodel(request.body).save();
+             response.send("Record Saved")
+          })
+          
+          app.get('/booking', async (request, response) => {
+            var data = await appmodel.find();
+            response.send(data)
+          });
 
 
 

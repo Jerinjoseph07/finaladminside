@@ -60,7 +60,7 @@ function Adminlog() {
     
   
     <Paper elevation={6} style={{ padding: 20, display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#f0f0f0', width: '330px', height: '320px' }}>
-        <Typography variant="h5">Login</Typography>
+        <Typography variant="h5">Welcome Admin</Typography>
         <TextField
           label="Username"
           variant="outlined"

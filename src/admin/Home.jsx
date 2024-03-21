@@ -26,6 +26,11 @@ const Home= () => {
           </Button>
           <Button component={Link} to="/w" color="inherit">
             All worker
+          </Button><Button component={Link} to="/workview" color="inherit">
+            all works
+          </Button>
+          <Button component={Link} to="/booking" color="inherit">
+            booking
           </Button>
           </div>
     </Toolbar>
